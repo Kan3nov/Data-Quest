@@ -7,7 +7,7 @@ class Player:
         self.achv = achv
 
 
-def gen_player_achievements(player: Player) -> None:
+def gen_player_achievements() -> set:
     achievements = ["Crafting Genius", "Strategist", "World Savior",
                     "Speed Runner", "Survivor", "Master Explorer",
                     "Treasure Hunter", "Unstoppable", "First Steps",
@@ -15,7 +15,7 @@ def gen_player_achievements(player: Player) -> None:
                     "Boss Slayer"]
     num_achv = random.randint(1, len(achievements))
     list_achv = random.sample(achievements, num_achv)
-    player.achv = set(list_achv)
+    return set(list_achv)
 
 
 def main():
@@ -30,10 +30,10 @@ def main():
     bob = Player("Bob")
     charlie = Player("Charlie")
     dylan = Player("Dylan")
-    gen_player_achievements(alice)
-    gen_player_achievements(bob)
-    gen_player_achievements(charlie)
-    gen_player_achievements(dylan)
+    alice.achv = gen_player_achievements()
+    bob.achv = gen_player_achievements()
+    charlie.achv = gen_player_achievements()
+    dylan.achv = gen_player_achievements()
     print("Player Alice: ", alice.achv)
     print("Player Charlie: ", charlie.achv)
     print("Player Bob: ", bob.achv)
